@@ -58,14 +58,18 @@ def lab_url() -> str:
 
 @pytest.fixture(scope="module")
 def conn(lab_url: str):
-    with psycopg.connect(lab_url) as connection:
-        yield connection
+    try:
+        with psycopg.connect(lab_url, connect_timeout=3) as connection:
+            yield connection
+    except Exception as exc:
+        pytest.skip(f"Database dbmedic_lab unreachable ({exc})")
 
 
 # ---------------------------------------------------------------------------
 # Target query correctness
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestTargetQuery:
     def test_query_executes_without_error(self, conn: psycopg.Connection) -> None:
         with conn.cursor() as cur:
@@ -90,6 +94,7 @@ class TestTargetQuery:
 # Benchmark runner
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestBenchmarkRunner:
     def test_run_benchmark_returns_result(self, conn: psycopg.Connection) -> None:
         result = run_benchmark(conn, n_runs=3)
@@ -121,6 +126,7 @@ class TestBenchmarkRunner:
 # Sequential scan detection (pre-remediation)
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestSeqScanDetection:
     def test_seq_scan_occurs_without_index(self, conn: psycopg.Connection) -> None:
         """
@@ -142,6 +148,7 @@ class TestSeqScanDetection:
 # Remediation gating
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestRemediationGating:
     def test_remediation_requires_approval(self, conn: psycopg.Connection) -> None:
         """apply_remediation must raise PermissionError when approved=False."""
@@ -163,6 +170,7 @@ class TestRemediationGating:
 # compare_results unit tests (no DB needed)
 # ---------------------------------------------------------------------------
 
+@pytest.mark.unit
 class TestCompareResults:
     def test_improvement_detected(self) -> None:
         before = {"median_execution_time_ms": 200.0, "scan_type": "Seq Scan"}

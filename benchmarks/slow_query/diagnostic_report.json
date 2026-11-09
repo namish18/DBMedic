@@ -1,0 +1,24 @@
+{
+  "incident_id": "slow_query_001",
+  "incident_type": "slow_query",
+  "status": "diagnosed",
+  "severity": "high",
+  "summary": "Query performance degradation detected",
+  "root_cause": {
+    "type": "missing_suitable_index",
+    "description": "Sequential scan detected on orders"
+  },
+  "evidence": {
+    "scan_type": "Sequential Scan",
+    "execution_time_ms": 18.42,
+    "table_name": "orders",
+    "filter_column": "customer_id",
+    "suitable_index_exists": false
+  },
+  "recommendation": {
+    "action": "create_index",
+    "sql": "CREATE INDEX idx_orders_customer_id ON orders(customer_id)",
+    "requires_approval": true
+  },
+  "confidence": 1.0
+}

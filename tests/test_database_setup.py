@@ -44,14 +44,18 @@ def lab_url() -> str:
 
 @pytest.fixture(scope="module")
 def conn(lab_url: str):
-    with psycopg.connect(lab_url) as connection:
-        yield connection
+    try:
+        with psycopg.connect(lab_url, connect_timeout=3) as connection:
+            yield connection
+    except Exception as exc:
+        pytest.skip(f"Database dbmedic_lab unreachable ({exc})")
 
 
 # ---------------------------------------------------------------------------
 # Connectivity
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestConnectivity:
     def test_connection_succeeds(self, conn: psycopg.Connection) -> None:
         """Database must be reachable and return a valid version string."""
@@ -72,6 +76,7 @@ class TestConnectivity:
 # Schema
 # ---------------------------------------------------------------------------
 
+@pytest.mark.integration
 class TestSchema:
     EXPECTED_TABLES = {"customers", "products", "orders", "order_items"}
 
