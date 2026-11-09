@@ -1,0 +1,3 @@
+# Benchmark results are saved here by run_slow_query_benchmark.py
+# baseline.json and after_remediation.json will appear after running the benchmark.
+

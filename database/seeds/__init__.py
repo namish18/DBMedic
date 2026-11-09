@@ -1,0 +1,2 @@
+"""DBMedic database seeds package."""
+

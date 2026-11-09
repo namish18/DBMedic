@@ -1,0 +1,2 @@
+"""DBMedic tests package."""
+

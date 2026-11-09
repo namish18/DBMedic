@@ -1,0 +1,2 @@
+"""DBMedic database schemas package."""
+
