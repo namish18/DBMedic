@@ -1,0 +1,11 @@
+# DBMedic Dependencies
+
+# PostgreSQL driver with pre-compiled libpq C-library bindings (required on Windows)
+psycopg[binary]>=3.1.9
+
+# Environment variable configuration (.env)
+python-dotenv>=1.0.1
+
+# Test suite and benchmarking harness
+pytest>=7.4.0
+

@@ -70,7 +70,12 @@ DBMedic/
    cd DBMedic
    ```
 
-2. Create your local environment configuration from the example template:
+2. Install Python dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. Create your local environment configuration from the example template:
    ```bash
    cp .env.example .env
    ```

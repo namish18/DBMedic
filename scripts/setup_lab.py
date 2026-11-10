@@ -29,7 +29,7 @@ from dotenv import load_dotenv
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-load_dotenv(PROJECT_ROOT / ".env")
+load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 logging.basicConfig(
     level=logging.INFO,
@@ -39,6 +39,26 @@ logger = logging.getLogger("setup_lab")
 
 SCHEMA_FILE = PROJECT_ROOT / "database" / "schemas" / "schema.sql"
 LAB_DB_NAME = "dbmedic_lab"
+
+
+def _log_conn_target(label: str, url: str) -> None:
+    try:
+        import psycopg.conninfo
+        info = psycopg.conninfo.conninfo_to_dict(url)
+        pwd = info.get("password", "")
+        masked_pwd = f"{pwd[:2]}***{pwd[-2:]}" if len(pwd) > 4 else "***"
+        logger.info(
+            "%s connection info: host=%s port=%s db=%s user=%s (pwd=%s, len=%d)",
+            label,
+            info.get("host"),
+            info.get("port"),
+            info.get("dbname"),
+            info.get("user"),
+            masked_pwd,
+            len(pwd),
+        )
+    except Exception as exc:
+        logger.debug("Could not parse url for logging: %s", exc)
 
 
 def _get_admin_url() -> str:
@@ -115,6 +135,9 @@ def verify_schema(lab_url: str) -> None:
 def main() -> None:
     admin_url = _get_admin_url()
     lab_url = _get_lab_url()
+
+    _log_conn_target("Admin DB", admin_url)
+    _log_conn_target("Lab DB", lab_url)
 
     logger.info("Step 1/3  Creating lab database …")
     create_lab_database(admin_url)

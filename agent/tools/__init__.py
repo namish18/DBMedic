@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 # Ensure .env is loaded
 PROJECT_ROOT = Path(__file__).resolve().parent.parent.parent
-load_dotenv(PROJECT_ROOT / ".env")
+load_dotenv(PROJECT_ROOT / ".env", override=True)
 
 
 def get_lab_database_url() -> str:
@@ -30,7 +30,7 @@ def get_lab_database_url() -> str:
     url = os.getenv("LAB_DATABASE_URL")
     if not url:
         # Retry with explicit path reload
-        load_dotenv(PROJECT_ROOT / ".env")
+        load_dotenv(PROJECT_ROOT / ".env", override=True)
         url = os.getenv("LAB_DATABASE_URL")
     if not url:
         raise EnvironmentError(

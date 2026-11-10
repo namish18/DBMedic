@@ -1,0 +1,49 @@
+{
+  "incident_id": "fc4e45ef-87ea-420c-8085-42fbaad54b64",
+  "query": "SELECT COUNT(*) FROM orders WHERE customer_id = %(customer_id)s",
+  "customer_id": 4242,
+  "runs": [
+    {
+      "run": 1,
+      "wall_clock_ms": 29.445,
+      "rows_returned": 20
+    },
+    {
+      "run": 2,
+      "wall_clock_ms": 26.817,
+      "rows_returned": 20
+    },
+    {
+      "run": 3,
+      "wall_clock_ms": 25.273,
+      "rows_returned": 20
+    },
+    {
+      "run": 4,
+      "wall_clock_ms": 24.201,
+      "rows_returned": 20
+    },
+    {
+      "run": 5,
+      "wall_clock_ms": 23.625,
+      "rows_returned": 20
+    },
+    {
+      "run": 6,
+      "wall_clock_ms": 24.209,
+      "rows_returned": 20
+    },
+    {
+      "run": 7,
+      "wall_clock_ms": 23.545,
+      "rows_returned": 20
+    }
+  ],
+  "median_execution_time_ms": 24.209,
+  "scan_type": "Seq Scan",
+  "rows_returned": 1,
+  "shared_hit_blocks": 63,
+  "shared_read_blocks": 0,
+  "remediation_status": "not_applied",
+  "performance_improvement_pct": null
+}
