@@ -1,0 +1,15 @@
+{
+  "_note": "Baseline results will be populated after running: python scripts/run_agent.py --evaluate",
+  "_status": "pending — model inference not yet executed",
+  "evaluation_id": null,
+  "timestamp": null,
+  "model_id": "CohereLabs/tiny-aya-global",
+  "model_revision": null,
+  "total_cases": 10,
+  "runs_per_case": 1,
+  "total_runs": 0,
+  "metrics": {
+    "note": "Run baseline evaluation to populate actual metrics"
+  }
+}
+

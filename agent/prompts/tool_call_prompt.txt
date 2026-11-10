@@ -1,0 +1,10 @@
+Tool execution result for "{tool_name}":
+
+{tool_output}
+
+Based on this observation, decide whether to:
+1. Call another diagnostic tool to gather more evidence, OR
+2. Provide your final diagnosis if you have sufficient evidence.
+
+Respond with valid JSON only — either a tool_call or final_answer.
+
