@@ -1,0 +1,12 @@
+{
+  "scenario_id": "slow_query_missing_index",
+  "hidden_from_model": true,
+  "expected_root_cause_type": "missing_suitable_index",
+  "expected_scan_type_before": "Sequential Scan",
+  "expected_scan_types_after": ["Index Scan", "Index Only Scan", "Bitmap Index Scan"],
+  "expected_recommended_action": "create_index",
+  "expected_proposed_sql": "CREATE INDEX idx_orders_customer_id ON orders(customer_id)",
+  "expected_requires_approval": true,
+  "expected_final_status": "RESOLVED"
+}
+

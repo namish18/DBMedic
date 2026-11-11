@@ -1,0 +1,47 @@
+{
+  "schema_version": "dbmedic.incident/1",
+  "run_id": "2006e01a-a800-419f-8ab9-9cfbc615f12d",
+  "incident_id": "slow_query_001",
+  "status": "BLOCKED",
+  "query": "Why is my orders query for customer_id = 4242 taking so long?",
+  "customer_id": 4242,
+  "execution_mode": "live_tiny_aya",
+  "simulated": false,
+  "model_id": "CohereLabs/tiny-aya-global",
+  "created_at": "2026-11-11T16:02:47.685878+00:00",
+  "updated_at": "2026-11-11T16:02:47.786741+00:00",
+  "state_history": [
+    {
+      "from": null,
+      "to": "CREATED",
+      "timestamp": "2026-11-11T16:02:47.685878+00:00",
+      "reason": "Incident created",
+      "actor": "dbmedic_orchestrator"
+    },
+    {
+      "from": "CREATED",
+      "to": "INVESTIGATING",
+      "timestamp": "2026-11-11T16:02:47.693692+00:00",
+      "reason": "Starting evidence collection in 'live_tiny_aya' mode",
+      "actor": "dbmedic_orchestrator"
+    },
+    {
+      "from": "INVESTIGATING",
+      "to": "BLOCKED",
+      "timestamp": "2026-11-11T16:02:47.785402+00:00",
+      "reason": "PostgreSQL connection failed (OperationalError): connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Permission denied (0x0000271D/10013) Is the server running on that host and accepting TCP/IP connections? Multiple connection attempts failed. All",
+      "actor": "dbmedic_orchestrator"
+    }
+  ],
+  "evidence": null,
+  "pre_remediation_metrics": null,
+  "diagnosis": null,
+  "diagnosis_validation": null,
+  "remediation_plan": null,
+  "approval_request": null,
+  "remediation_result": null,
+  "post_remediation_metrics": null,
+  "verification_report": null,
+  "blocker_reason": "PostgreSQL connection failed (OperationalError): connection failed: connection to server at \"127.0.0.1\", port 5432 failed: Permission denied (0x0000271D/10013) Is the server running on that host and accepting TCP/IP connections? Multiple connection attempts failed. All",
+  "closure_summary": null
+}

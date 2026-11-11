@@ -1,0 +1,17 @@
+{
+  "scenario_id": "slow_query_existing_index",
+  "incident_id": "slow_query_existing_idx",
+  "title": "Negative Control: Orders Lookup When idx_orders_customer_id Already Exists",
+  "description": "Tests whether DBMedic accurately verifies an existing index and refrains from proposing duplicate or unnecessary DDL changes.",
+  "target_database": "dbmedic_lab",
+  "target_table": "orders",
+  "filter_column": "customer_id",
+  "customer_id": 4242,
+  "query_template_key": "slow_query_customer_orders",
+  "user_prompt": "Verify if customer_id lookups on orders still suffer from missing index overhead.",
+  "precondition": {
+    "idx_orders_customer_id_exists": true,
+    "estimated_orders_rows": 200000
+  }
+}
+

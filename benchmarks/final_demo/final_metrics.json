@@ -1,0 +1,212 @@
+{
+  "schema_version": "dbmedic.final_metrics/1",
+  "generated_at": "2026-11-11T16:06:27.043279+00:00",
+  "evaluation_mode": "offline_deterministic_and_stub_pending_live_model",
+  "auditkit_status": {
+    "installed": false,
+    "using_stub": true,
+    "version": "not-installed",
+    "validation_classification": "AuditKITStub (offline stub - NOT independent AuditKIT validation)",
+    "license": "LSAL-1.2 (Lexsi Labs source-available, non-commercial; review before commercial deployment)"
+  },
+  "episode_counts": {
+    "num_real_episodes": 0,
+    "num_simulated_episodes": 20,
+    "redteam_deterministic_cases": 10,
+    "auditkit_defined_scenarios": 18,
+    "auditkit_hidden_scenarios": 5,
+    "note": "Real model episodes and simulated/deterministic cases are strictly separated."
+  },
+  "agent_metrics_live_model": {
+    "diagnosis_accuracy": null,
+    "tool_call_validity_rate": null,
+    "tool_selection_accuracy": null,
+    "task_success_rate": null,
+    "average_tool_calls_per_task": null,
+    "average_steps_per_task": null,
+    "safety_violation_count": null,
+    "evidence_grounding_accuracy": null,
+    "status": "null_pending_live_model_inference"
+  },
+  "remediation_metrics": {
+    "source": null,
+    "execution_mode": null,
+    "simulated": null,
+    "baseline_execution_time_ms": null,
+    "post_remediation_execution_time_ms": null,
+    "performance_improvement_pct": null,
+    "verdict": null,
+    "historical_phase1_reference": {
+      "baseline_median_ms": 24.209,
+      "after_remediation_median_ms": 1.188,
+      "performance_improvement_pct": 95.09,
+      "note": "Preserved from Phase 1 baseline artifacts (not overwritten by Phase 6)."
+    }
+  },
+  "safety_and_redteam": {
+    "deterministic_redteam_executed": true,
+    "attacks_tested": 10,
+    "attacks_blocked": 10,
+    "attack_success_rate": 0.0,
+    "target_met": true,
+    "note": "Deterministic validator safety tests verify deterministic guards, not unguarded live Tiny Aya resistance."
+  },
+  "phase3_baseline_status": {
+    "trajectories_count": 0,
+    "observed_status": "pending \u2014 model inference not yet executed",
+    "inference_executed": false
+  },
+  "phase4_agenttune_status": {
+    "agenttune_installed": true,
+    "agenttune_version": "1.1.4",
+    "dataset_splits": {
+      "curated_total": 23,
+      "train": 18,
+      "validation": 5,
+      "hidden_test_prompts": 5,
+      "baseline_eval_reserved": 10,
+      "rejected": 0,
+      "duplicates_removed": 10
+    },
+    "dataset_sha256_verified": true,
+    "sft_status": "blocked",
+    "grpo_status": "gated_blocked",
+    "fine_tuned_checkpoint_exists": false,
+    "comparison_status": "pending_live_evaluation"
+  },
+  "phase5_regression_analysis": {
+    "baseline_id": "base_tiny_aya_global",
+    "candidate_id": "candidate_sft_checkpoint",
+    "regressions": [],
+    "improvements": [],
+    "unchanged": [],
+    "uncomputable": [
+      {
+        "metric": "agent_loop_rate",
+        "description": "Agent loop detection rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "average_steps_per_task",
+        "description": "Avg steps per task",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "average_tool_calls_per_task",
+        "description": "Avg tool calls per task",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "diagnosis_accuracy",
+        "description": "Diagnosis accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "evidence_grounding_accuracy",
+        "description": "Evidence grounding accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "redteam_attack_success_rate",
+        "description": "Red-team attack success rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "redundant_tool_call_rate",
+        "description": "Redundant tool call rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "safety_violation_count",
+        "description": "Safety violation count",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "task_success_rate",
+        "description": "Task success rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_call_f1",
+        "description": "Tool call F1 score",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_call_validity_rate",
+        "description": "Tool call validity rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_execution_success_rate",
+        "description": "Tool execution success",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_selection_accuracy",
+        "description": "Tool selection accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "trajectory_match_rate",
+        "description": "Trajectory match rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      }
+    ],
+    "has_critical_regression": false,
+    "has_safety_regression": false,
+    "overall_verdict": "hold"
+  },
+  "phase5_deployment_gate": {
+    "decision": "hold_keep_base",
+    "approved": false,
+    "human_approved": false,
+    "checks": {
+      "real_baseline_evaluation": false,
+      "real_candidate_evaluation": false,
+      "no_critical_safety_regression": true,
+      "zero_unauthorized_actions": true,
+      "no_hidden_test_regression": true,
+      "tool_call_validity_non_regression": null,
+      "task_success_non_regression": null,
+      "evaluation_provenance_verified": false,
+      "human_approved": false
+    },
+    "regressions": [],
+    "blockers": [
+      "Real baseline evaluation not completed (episodes: 0, required: 1)",
+      "Real candidate evaluation not completed (episodes: 0, required: 1)",
+      "AuditKIT config fingerprint missing \u2014 provenance unverified.",
+      "Human approval has not been granted. Run with --human-approve after reviewing all results."
+    ],
+    "timestamp": "2026-11-11T16:06:27.041128+00:00",
+    "note": "Deployment on hold \u2014 evaluation data or approvals are pending."
+  }
+}

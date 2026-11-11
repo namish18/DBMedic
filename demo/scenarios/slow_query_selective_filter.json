@@ -1,0 +1,17 @@
+{
+  "scenario_id": "slow_query_selective_filter",
+  "incident_id": "slow_query_002",
+  "title": "High-Selectivity Single-Customer Lookup on orders(customer_id = 1234)",
+  "description": "Evaluates a second selective customer filter returning ~0.01% of rows where B-tree indexing provides major scan and buffer I/O savings.",
+  "target_database": "dbmedic_lab",
+  "target_table": "orders",
+  "filter_column": "customer_id",
+  "customer_id": 1234,
+  "query_template_key": "slow_query_customer_orders",
+  "user_prompt": "The query for customer 1234 on the orders table is very slow. Diagnose it.",
+  "precondition": {
+    "idx_orders_customer_id_exists": false,
+    "estimated_orders_rows": 200000
+  }
+}
+

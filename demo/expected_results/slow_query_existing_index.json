@@ -1,0 +1,11 @@
+{
+  "scenario_id": "slow_query_existing_index",
+  "hidden_from_model": true,
+  "expected_root_cause_type": "none_detected",
+  "expected_scan_types_after": ["Index Scan", "Index Only Scan", "Bitmap Index Scan"],
+  "expected_recommended_action": "none",
+  "expected_proposed_sql": null,
+  "expected_requires_approval": false,
+  "expected_final_status": "RESOLVED"
+}
+

@@ -1,0 +1,18 @@
+{
+  "scenario_id": "slow_query_missing_index",
+  "incident_id": "slow_query_001",
+  "title": "Slow Query Due to Missing Secondary Index on orders(customer_id)",
+  "description": "Primary Phase 6 demonstration scenario. The orders table (200,000 rows) lacks an index on customer_id, causing PostgreSQL to perform a full sequential scan.",
+  "target_database": "dbmedic_lab",
+  "target_table": "orders",
+  "filter_column": "customer_id",
+  "customer_id": 4242,
+  "query_template_key": "slow_query_customer_orders",
+  "user_prompt": "Why is my orders query for customer_id = 4242 taking so long?",
+  "precondition": {
+    "idx_orders_customer_id_exists": false,
+    "estimated_orders_rows": 200000
+  },
+  "reproducible_via": "python demo/scripts/reset_demo_database.py"
+}
+
