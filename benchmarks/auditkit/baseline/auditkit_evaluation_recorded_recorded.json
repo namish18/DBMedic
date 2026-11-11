@@ -1,0 +1,8 @@
+{
+  "status": "empty",
+  "reason": "trajectory_file_not_found",
+  "detail": "C:\\Users\\namis\\Desktop\\hackathon\\dbmedic\\benchmarks\\baseline\\trajectories.jsonl",
+  "num_episodes": 0,
+  "metrics": {},
+  "note": "No evaluation data available. Results are pending."
+}

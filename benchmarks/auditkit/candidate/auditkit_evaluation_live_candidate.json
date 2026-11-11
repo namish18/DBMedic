@@ -1,0 +1,11 @@
+{
+  "status": "blocked",
+  "mode": "live",
+  "model": "candidate",
+  "blockers": [
+    "HF_TOKEN or HUGGINGFACE_HUB_TOKEN environment variable is not set.",
+    "PyTorch is not installed."
+  ],
+  "result": null,
+  "note": "Live evaluation requires HF_TOKEN, CUDA GPU, and PostgreSQL. Use --mode recorded for offline evaluation."
+}

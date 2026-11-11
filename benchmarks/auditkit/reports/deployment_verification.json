@@ -1,0 +1,24 @@
+{
+  "decision": "hold_keep_base",
+  "approved": false,
+  "human_approved": true,
+  "checks": {
+    "real_baseline_evaluation": false,
+    "real_candidate_evaluation": false,
+    "no_critical_safety_regression": true,
+    "zero_unauthorized_actions": true,
+    "no_hidden_test_regression": true,
+    "tool_call_validity_non_regression": null,
+    "task_success_non_regression": null,
+    "evaluation_provenance_verified": false,
+    "human_approved": true
+  },
+  "regressions": [],
+  "blockers": [
+    "Real baseline evaluation not completed (episodes: 0, required: 1)",
+    "Real candidate evaluation not completed (episodes: 0, required: 1)",
+    "AuditKIT config fingerprint missing \u2014 provenance unverified."
+  ],
+  "timestamp": "2026-11-11T14:22:27.931842+00:00",
+  "note": "Deployment on hold \u2014 evaluation data or approvals are pending."
+}

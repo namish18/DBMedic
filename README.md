@@ -15,6 +15,7 @@ DBMedic is an AI-powered autonomous database diagnostic and self-healing agent b
 - **Phase 2 — Diagnostic Engine**: Deterministic PostgreSQL diagnostic tools (`query_analyzer`, `table_monitor`, `index_monitor`, `diagnosis_engine`) that investigate incidents and produce structured JSON diagnostic reports.
 - **Phase 3 — Autonomous Agent Integration & Baseline Evaluation**: Full ReAct agent integration with `CohereLabs/tiny-aya-global`, strict tool-calling protocol, argument validation, trajectory logging, and standardized baseline evaluation.
 - **Phase 4 — AgentTune Training, Failure Learning & Self-Healing Pipeline**: 10-category failure classifier, verified Phase 2 correction synthesis, leakage-free Tiny Aya SFT dataset curation with SHA-256 verification, AgentTune LoRA SFT distillation, gated GRPO experimentation, deterministic diagnostic rewards, and human-approved deployment gating.
+- **Phase 5 — AuditKIT Integration, Agent Evaluation & Deployment Verification**: Independent AuditKIT evaluation spine (Lexsi Labs, LSAL-1.2) with offline stub fallback, DBMedic episode adapter, 18-scenario evaluation dataset, deterministic 10-category red-team benchmark (10/10 attacks blocked), regression analyzer, and 9-check deployment gate with mandatory human approval.
 
 ## Project Structure
 

@@ -1,0 +1,233 @@
+{
+  "schema": "dbmedic_auditkit_report/1",
+  "generated_at": "2026-11-11T14:21:51.478289+00:00",
+  "dbmedic_version": "0.5.0-phase5",
+  "dbmedic_commit": "1921b33",
+  "auditkit_version": "not-installed",
+  "base_model": {
+    "id": "CohereLabs/tiny-aya-global",
+    "revision": null
+  },
+  "candidate_model": {
+    "id": null,
+    "revision": null
+  },
+  "evaluation_dataset": {
+    "hashes": {},
+    "note": "Ground-truth answers are never exposed to the evaluated model."
+  },
+  "evaluation_sample_counts": {
+    "baseline_episodes": "pending",
+    "candidate_episodes": "pending",
+    "redteam_cases": "pending"
+  },
+  "metric_definitions": {
+    "tool_call_validity_rate": "Fraction of model tool calls that passed the validator.",
+    "tool_selection_accuracy": "Fraction of runs selecting at least one relevant diagnostic tool.",
+    "task_success_rate": "Fraction of runs producing an independently verified correct diagnosis.",
+    "average_tool_calls_per_task": "Mean number of tool invocations per evaluation episode.",
+    "average_steps_per_task": "Mean total agent steps (model + tool) per episode.",
+    "safety_violation_count": "Total number of unsafe/destructive tool calls rejected.",
+    "evidence_grounding_accuracy": "Fraction of evidence items grounded in actual tool observations.",
+    "diagnosis_accuracy": "Exact root-cause match against independently verified ground truth.",
+    "redteam_attack_success_rate": "Fraction of red-team attacks that succeeded past all defenses.",
+    "inference_latency_ms": "Mean model inference latency in milliseconds.",
+    "end_to_end_latency_ms": "Mean end-to-end agent latency in milliseconds.",
+    "tool_execution_failures": "Number of tool executions that produced an error result.",
+    "evaluation_sample_count": "Number of unique evaluation episodes processed."
+  },
+  "baseline_results": {
+    "status": "blocked",
+    "mode": "live",
+    "model": "base",
+    "blockers": [
+      "HF_TOKEN or HUGGINGFACE_HUB_TOKEN environment variable is not set.",
+      "PyTorch is not installed."
+    ],
+    "result": null,
+    "note": "Live evaluation requires HF_TOKEN, CUDA GPU, and PostgreSQL. Use --mode recorded for offline evaluation.",
+    "_label": "base_model_evaluation",
+    "_status": "actual"
+  },
+  "candidate_results": {
+    "status": "blocked",
+    "mode": "live",
+    "model": "candidate",
+    "blockers": [
+      "HF_TOKEN or HUGGINGFACE_HUB_TOKEN environment variable is not set.",
+      "PyTorch is not installed."
+    ],
+    "result": null,
+    "note": "Live evaluation requires HF_TOKEN, CUDA GPU, and PostgreSQL. Use --mode recorded for offline evaluation.",
+    "_label": "candidate_model_evaluation",
+    "_status": "actual"
+  },
+  "redteam_results": {
+    "_status": "not_available",
+    "_label": "red_team_evaluation",
+    "_reason": "red_team_evaluation has not been completed. All metrics are pending."
+  },
+  "performance_results": {
+    "_status": "not_available",
+    "_label": "performance_evaluation",
+    "_reason": "performance_evaluation has not been completed. All metrics are pending."
+  },
+  "regression_analysis": {
+    "baseline_id": "base_tiny_aya_global",
+    "candidate_id": "candidate_sft_checkpoint",
+    "regressions": [],
+    "improvements": [],
+    "unchanged": [],
+    "uncomputable": [
+      {
+        "metric": "agent_loop_rate",
+        "description": "Agent loop detection rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "average_steps_per_task",
+        "description": "Avg steps per task",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "average_tool_calls_per_task",
+        "description": "Avg tool calls per task",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "blockers",
+        "description": "blockers",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "diagnosis_accuracy",
+        "description": "Diagnosis accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "evidence_grounding_accuracy",
+        "description": "Evidence grounding accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "mode",
+        "description": "mode",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "model",
+        "description": "model",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "note",
+        "description": "note",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "redteam_attack_success_rate",
+        "description": "Red-team attack success rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "redundant_tool_call_rate",
+        "description": "Redundant tool call rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "result",
+        "description": "result",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "safety_violation_count",
+        "description": "Safety violation count",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "status",
+        "description": "status",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "task_success_rate",
+        "description": "Task success rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_call_f1",
+        "description": "Tool call F1 score",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_call_validity_rate",
+        "description": "Tool call validity rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_execution_success_rate",
+        "description": "Tool execution success",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "tool_selection_accuracy",
+        "description": "Tool selection accuracy",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      },
+      {
+        "metric": "trajectory_match_rate",
+        "description": "Trajectory match rate",
+        "reason": "both_values_null_or_pending",
+        "baseline": null,
+        "candidate": null
+      }
+    ],
+    "has_critical_regression": false,
+    "has_safety_regression": false,
+    "overall_verdict": "hold"
+  },
+  "deployment_gate": {
+    "decision": "hold_keep_base",
+    "reason": "Real evaluation data not yet available.",
+    "approved": false
+  },
+  "unresolved_blockers": []
+}
