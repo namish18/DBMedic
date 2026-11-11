@@ -1,0 +1,68 @@
+{
+  "dataset_validation": {
+    "passed": true,
+    "train_count": 18,
+    "validation_count": 5,
+    "hidden_test_count": 5,
+    "sha256_verified": true,
+    "leakage_clean": true,
+    "safety_clean": true,
+    "protocol_clean": true,
+    "errors": [],
+    "warnings": [],
+    "hashes": {
+      "train_jsonl": "c21ccf3568c2c820b09e8b22f97cda84cf32f2c439a0b083ab03ee056b1c04cd",
+      "validation_jsonl": "f5325364d19647543a45d2da14d4efa8146764f056606f846f4c816014e0066e",
+      "hidden_test_jsonl": "a3171e14b9799259f7cdac06308a1cd2e1dfe6f770c90e8f41e84185d4c1f75b",
+      "curated_all_jsonl": "283e5ad042a41ccc3265973d2ff108ec31931a8235d7750823cabb6295a5ef18"
+    }
+  },
+  "sft_readiness": {
+    "model_id": "CohereLabs/tiny-aya-global",
+    "hf_token_present": false,
+    "hf_token_env_var": null,
+    "cuda_available": false,
+    "gpu_name": null,
+    "gpu_vram_gb": 0.0,
+    "free_ram_gb": 1.52,
+    "total_ram_gb": 15.12,
+    "db_available": false,
+    "trl_available": true,
+    "peft_available": true,
+    "datasets_available": true,
+    "agenttune_available": true,
+    "train_dataset_exists": true,
+    "validation_dataset_exists": true,
+    "dataset_manifest_valid": true,
+    "ready_for_dry_run": true,
+    "ready_for_live_training": false,
+    "blockers": [
+      "HF_TOKEN / HUGGINGFACE_HUB_TOKEN not found in environment/.env for gated model 'CohereLabs/tiny-aya-global'.",
+      "No CUDA GPU detected (torch.cuda.is_available() == False). Full Tiny Aya SFT requires >=6-8 GB GPU VRAM."
+    ],
+    "warnings": [
+      "dbmedic_lab PostgreSQL is currently unreachable offline; offline curated dataset SFT preflight remains valid, but live trajectory collection and DB evaluation are blocked."
+    ],
+    "checked_at": "2026-11-11T13:14:29.019706+00:00"
+  },
+  "grpo_gating": {
+    "passed": false,
+    "sft_checkpoint_exists": false,
+    "sft_checkpoint_path": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft",
+    "hf_token_present": false,
+    "cuda_available": false,
+    "gpu_vram_gb": 0.0,
+    "min_required_vram_gb": 12.0,
+    "live_db_available": false,
+    "trl_available": true,
+    "read_only_tools_verified": true,
+    "num_readonly_tools": 8,
+    "blockers": [
+      "Missing verified SFT checkpoint at 'C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft'; complete SFT distillation before GRPO.",
+      "HF_TOKEN / HUGGINGFACE_HUB_TOKEN is not set.",
+      "CUDA GPU with >= 12.0 GB VRAM is required for GRPO rollouts (detected cuda=False, vram=0.0 GB).",
+      "Live dbmedic_lab PostgreSQL database must be online to run real diagnostic GRPO rollouts."
+    ],
+    "checked_at": "2026-11-11T13:14:29.067480+00:00"
+  }
+}

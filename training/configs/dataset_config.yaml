@@ -1,0 +1,43 @@
+# DBMedic Phase 4 Dataset Curation & Split Configuration
+
+dataset:
+  name: dbmedic_slow_query_diagnostics
+  version: "4.0"
+  seed: 42
+
+paths:
+  raw_dir: training/data/raw
+  processed_dir: training/data/processed
+  curated_dir: training/data/curated
+  splits_dir: training/data/splits
+  manifest_path: training/data/dataset_manifest.json
+
+curation:
+  require_verified: true
+  allow_unsafe_examples: false
+  deduplicate: true
+  min_diagnosis_length: 10
+  max_turns_per_example: 12
+  include_controlled_demonstrations: true
+  allowed_sources:
+    - verified_success_trajectory
+    - verified_corrected_failure
+    - human_reviewed_demonstration
+
+splits:
+  train_file: train.jsonl
+  validation_file: validation.jsonl
+  hidden_test_file: hidden_test.jsonl
+  strategy: scenario_group_isolated
+  validation_ratio: 0.2
+  prevent_hidden_leakage: true
+  strip_hidden_answers_from_prompts: true
+
+formatting:
+  model_id: CohereLabs/tiny-aya-global
+  protocol: dbmedic_json_v1
+  enforce_strict_role_alternation: true
+  fold_tool_outputs_into_user: true
+  loss_masking: completion_only
+  max_seq_length: 2048
+

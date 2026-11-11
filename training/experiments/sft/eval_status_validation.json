@@ -1,0 +1,25 @@
+{
+  "schema_version": "dbmedic.trained_eval_status/1",
+  "status": "dry_run_validated",
+  "executed_evaluation": false,
+  "split": "validation",
+  "num_cases": 5,
+  "hidden_answers_stripped": true,
+  "sample_public_prompt_keys": [
+    "customer_id",
+    "description",
+    "incident_id",
+    "query",
+    "split",
+    "target_table"
+  ],
+  "checkpoint_present": false,
+  "hf_token_present": false,
+  "live_db_available": false,
+  "blockers_for_live_eval": [
+    "No trained model/adapter checkpoint found at 'C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft'.",
+    "HF_TOKEN / HUGGINGFACE_HUB_TOKEN missing for base model tokenizer/weights.",
+    "Live dbmedic_lab PostgreSQL database is offline."
+  ],
+  "generated_at": "2026-11-11T13:04:55.277783+00:00"
+}

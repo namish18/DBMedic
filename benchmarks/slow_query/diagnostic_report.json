@@ -20,5 +20,6 @@
     "sql": "CREATE INDEX idx_orders_customer_id ON orders(customer_id)",
     "requires_approval": true
   },
+  "diagnostic_score": 1.0,
   "confidence": 1.0
 }

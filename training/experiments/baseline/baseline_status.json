@@ -1,0 +1,19 @@
+{
+  "schema_version": "dbmedic.baseline_snapshot/1",
+  "snapshot_purpose": "Immutable pre-Phase-4 reference of benchmarks/baseline/ before any AgentTune training",
+  "source_directory": "benchmarks/baseline",
+  "preserved_files": [
+    "results.json",
+    "summary.json"
+  ],
+  "trajectories_jsonl_present_at_snapshot": false,
+  "inference_executed": false,
+  "observed_status": "pending — model inference not yet executed",
+  "verified_blockers": [
+    "HF_TOKEN and HUGGINGFACE_HUB_TOKEN are not configured in .env; CohereLabs/tiny-aya-global is gated on Hugging Face Hub.",
+    "No NVIDIA/CUDA GPU available on host (CPU-only host with limited free system RAM).",
+    "dbmedic_lab PostgreSQL instance is offline on localhost:5432 in current session (docker CLI unavailable on PATH)."
+  ],
+  "reproduction_command": "python scripts/run_agent.py --evaluate"
+}
+

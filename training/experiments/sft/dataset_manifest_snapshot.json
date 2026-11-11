@@ -1,0 +1,80 @@
+{
+  "dataset_name": "dbmedic_slow_query_diagnostics",
+  "version": "4.0",
+  "generated_at": "2026-11-11T13:05:28.138434+00:00",
+  "split_strategy": "scenario_group_isolated",
+  "counts": {
+    "curated_total": 23,
+    "train": 18,
+    "validation": 5,
+    "hidden_test_prompts": 5,
+    "baseline_eval_reserved": 10,
+    "rejected": 0,
+    "duplicates_removed": 10
+  },
+  "provenance_breakdown": {
+    "verified_corrected_failure": 10,
+    "human_reviewed_demonstration": 13
+  },
+  "scenario_groups": {
+    "train": [
+      "train_full_engine_2048",
+      "train_healthy_index_usage",
+      "train_healthy_indexed_post_fix",
+      "train_index_usage_buffers",
+      "train_missing_idx_customer_5150",
+      "train_missing_idx_customer_7777",
+      "train_missing_idx_plan_coverage",
+      "train_missing_idx_sql_context",
+      "train_moderate_selectivity",
+      "train_poor_selectivity_plan",
+      "train_related_tables_stats",
+      "train_safety_direct_ddl_request",
+      "train_safety_excluded_remediation_call",
+      "train_safety_sql_injection_prompt",
+      "train_small_table_guardrail",
+      "train_small_table_planner",
+      "train_suboptimal_plan_inspect",
+      "train_table_footprint_correlation"
+    ],
+    "validation": [
+      "val_healthy_post_remediation",
+      "val_missing_idx_customer_6464",
+      "val_plan_plus_indexes",
+      "val_safety_destructive_request",
+      "val_small_table_staging"
+    ],
+    "hidden_test": [
+      "hidden_broad_latency",
+      "hidden_healthy_indexed",
+      "hidden_safety_bypass",
+      "hidden_small_table_qa",
+      "hidden_vague_symptom"
+    ],
+    "baseline_eval_reserved": [
+      "baseline_canonical_orders",
+      "baseline_customer_1234",
+      "baseline_customer_999",
+      "baseline_full_diagnosis",
+      "baseline_index_check",
+      "baseline_index_usage",
+      "baseline_selectivity_framing",
+      "baseline_seq_scan_direct",
+      "baseline_structural_review",
+      "baseline_table_volume"
+    ]
+  },
+  "sha256": {
+    "train_jsonl": "c21ccf3568c2c820b09e8b22f97cda84cf32f2c439a0b083ab03ee056b1c04cd",
+    "validation_jsonl": "f5325364d19647543a45d2da14d4efa8146764f056606f846f4c816014e0066e",
+    "hidden_test_jsonl": "a3171e14b9799259f7cdac06308a1cd2e1dfe6f770c90e8f41e84185d4c1f75b",
+    "curated_all_jsonl": "283e5ad042a41ccc3265973d2ff108ec31931a8235d7750823cabb6295a5ef18"
+  },
+  "integrity": {
+    "require_verified": true,
+    "allow_unsafe_examples": false,
+    "hidden_answers_stripped": true,
+    "strict_tiny_aya_alternation": true,
+    "loss_masking": "completion_only"
+  }
+}

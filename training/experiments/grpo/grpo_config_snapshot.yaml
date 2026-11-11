@@ -1,0 +1,62 @@
+experiment:
+  name: dbmedic_tiny_aya_grpo_v1
+  stage: grpo
+  method: agenttune.agentic.grpo
+  backend: trl
+  enabled: false
+  seed: 42
+  output_dir: training/experiments/grpo
+gating_requirements:
+  require_sft_checkpoint: true
+  sft_checkpoint_dir: training/experiments/sft
+  require_cuda_gpu: true
+  min_free_vram_gb: 12.0
+  require_live_db: true
+  require_hf_token: true
+model:
+  base_model_id: training/experiments/sft
+  fallback_base_model_id: CohereLabs/tiny-aya-global
+  trust_remote_code: false
+  device_map: auto
+peft:
+  use_peft: true
+  task_type: CAUSAL_LM
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: none
+  target_modules: all-linear
+rollout:
+  rollout_backend: transformers
+  max_steps_per_episode: 6
+  max_completion_length: 768
+  tools_fallback_prompt: cohere
+  tool_result_format: user_folded
+  read_only_tools_only: true
+  allowed_tools:
+  - get_query_execution_plan
+  - analyze_query_performance
+  - get_table_statistics
+  - get_table_size
+  - get_table_indexes
+  - get_index_usage
+  - inspect_customer_id_index
+  - diagnose_slow_query
+  excluded_tools:
+  - apply_remediation
+  - execute_sql
+training:
+  num_generations: 2
+  max_steps: 20
+  per_device_train_batch_size: 1
+  gradient_accumulation_steps: 4
+  learning_rate: 5.0e-06
+  beta: 0.04
+  temperature: 0.7
+  bf16: true
+  gradient_checkpointing: true
+  log_completions: true
+  report_to: none
+rewards:
+  config_path: training/rewards/reward_config.yaml
+  use_composite_diagnostic_reward: true

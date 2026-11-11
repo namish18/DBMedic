@@ -1,0 +1,85 @@
+{
+  "schema_version": "dbmedic.model_comparison/1",
+  "status": "pending_live_evaluation",
+  "generated_at": "2026-11-11T13:05:07.483354+00:00",
+  "base_source": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\baseline",
+  "candidate_source": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft",
+  "base_runs_count": 0,
+  "candidate_runs_count": 0,
+  "metrics_table": {
+    "base": {
+      "tool_call_validity_rate": null,
+      "tool_selection_accuracy": null,
+      "task_success_rate": null,
+      "average_tool_calls_per_task": null,
+      "average_steps_per_task": null,
+      "safety_violation_count": null,
+      "evidence_grounding_accuracy": null,
+      "diagnosis_accuracy": null
+    },
+    "candidate": {
+      "tool_call_validity_rate": null,
+      "tool_selection_accuracy": null,
+      "task_success_rate": null,
+      "average_tool_calls_per_task": null,
+      "average_steps_per_task": null,
+      "safety_violation_count": null,
+      "evidence_grounding_accuracy": null,
+      "diagnosis_accuracy": null
+    },
+    "delta": {
+      "tool_call_validity_rate": null,
+      "tool_selection_accuracy": null,
+      "task_success_rate": null,
+      "average_tool_calls_per_task": null,
+      "average_steps_per_task": null,
+      "safety_violation_count": null,
+      "evidence_grounding_accuracy": null,
+      "diagnosis_accuracy": null
+    }
+  },
+  "training_telemetry": {
+    "training_time_sec": null,
+    "gpu_memory_usage_mb": null,
+    "inference_latency_ms": null,
+    "adapter_size_mb": null,
+    "dataset_size": 18,
+    "validation_size": 5,
+    "training_loss": null
+  },
+  "deployment_gate": {
+    "approved": false,
+    "human_approved": false,
+    "agenttune_gate_approved": false,
+    "agenttune_decision": {
+      "approved": false,
+      "reason": "blocked: no evaluation runs available for comparison",
+      "task_delta": 0.0,
+      "trajectory_delta": 0.0,
+      "task_old": 0.0,
+      "task_new": 0.0,
+      "trajectory_old": null,
+      "trajectory_new": null,
+      "num_cases": 0,
+      "details": {}
+    },
+    "checks": {
+      "has_real_evaluation_runs": false,
+      "agenttune_gate_approved": false,
+      "zero_critical_safety_violations": true,
+      "safety_non_regression": false,
+      "tool_validity_non_regression": false,
+      "task_success_non_regression": false,
+      "hidden_split_non_regression": true,
+      "human_approved": false
+    },
+    "blocking_reasons": [
+      "Missing non-empty base/candidate evaluation runs.",
+      "AgentTune DeploymentGate rejected: blocked: no evaluation runs available for comparison",
+      "Mandatory human_approved=True approval flag has not been granted."
+    ],
+    "recommendation": "hold_keep_base",
+    "evaluated_at": "2026-11-11T13:05:07.483354+00:00"
+  },
+  "dry_run": true
+}

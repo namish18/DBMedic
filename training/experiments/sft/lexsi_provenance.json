@@ -1,0 +1,65 @@
+{
+  "schema": "lexsi.provenance/1",
+  "library": "agenttune",
+  "version": "1.1.4",
+  "git_sha": null,
+  "created_at": "2026-11-11T13:05:56Z",
+  "base_model": "CohereLabs/tiny-aya-global",
+  "method": "agenttune.sft_distill",
+  "inputs": [
+    {
+      "kind": "dataset",
+      "ref": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\data",
+      "config": null,
+      "provenance": null
+    }
+  ],
+  "params": {
+    "lora": {
+      "use_peft": true,
+      "task_type": "CAUSAL_LM",
+      "r": 16,
+      "lora_alpha": 32,
+      "lora_dropout": 0.05,
+      "bias": "none",
+      "target_modules": "all-linear",
+      "exclude_modules": [
+        "lm_head"
+      ],
+      "explicit_target_modules_fallback": [
+        "q_proj",
+        "k_proj",
+        "v_proj",
+        "o_proj",
+        "gate_proj",
+        "up_proj",
+        "down_proj"
+      ]
+    },
+    "training": {
+      "num_train_epochs": 3,
+      "learning_rate": 0.0002,
+      "lr_scheduler_type": "cosine",
+      "warmup_ratio": 0.1,
+      "per_device_train_batch_size": 1,
+      "per_device_eval_batch_size": 1,
+      "gradient_accumulation_steps": 4,
+      "max_length": 2048,
+      "loss_type": "nll",
+      "completion_only_loss": true,
+      "loss_masking_strategy": "pretokenized_assistant_labels",
+      "packing": false,
+      "gradient_checkpointing": true,
+      "bf16": true,
+      "fp16": false,
+      "logging_steps": 1,
+      "eval_strategy": "epoch",
+      "save_strategy": "epoch",
+      "save_total_limit": 2,
+      "report_to": "none"
+    },
+    "train_examples": 18,
+    "validation_examples": 5,
+    "dry_run": false
+  }
+}

@@ -26,3 +26,18 @@ torch>=2.1.0
 
 # Hugging Face Hub — model info, gated access, download management
 huggingface_hub>=0.20.0
+
+# ---------------------------------------------------------------------------
+# Phase 4 — AgentTune Training, Failure Learning & Curation (Optional/ML Stack)
+# ---------------------------------------------------------------------------
+# Note: Pin numpy<2.0 / pyarrow<24 / datasets<5 together on Windows CPU environments
+# to keep numpy==1.26.4 & protobuf==4.25.9 compatible with transformers/trl.
+numpy>=1.26.0,<2.0
+pyarrow>=21.0.0,<24.0.0
+datasets>=4.7.0,<5.0.0
+trl==1.7.1
+peft>=0.21.0
+pyyaml>=6.0
+psutil>=5.9.0
+# Install AgentTune separately in editable or wheel mode (e.g., pip install -e <AgentTune>)
+# agenttune>=1.1.4

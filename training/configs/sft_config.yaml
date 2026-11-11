@@ -1,0 +1,74 @@
+# DBMedic Phase 4 Primary Training Config — AgentTune LoRA SFT Distillation
+
+experiment:
+  name: dbmedic_tiny_aya_sft_v1
+  stage: sft
+  method: agenttune.sft_distill
+  seed: 42
+  output_dir: training/experiments/sft
+
+model:
+  base_model_id: CohereLabs/tiny-aya-global
+  architecture_family: cohere2
+  trust_remote_code: false
+  device_map: auto
+  torch_dtype: bfloat16
+  fallback_cpu_dtype: float32
+  require_hf_token: true
+
+peft:
+  use_peft: true
+  task_type: CAUSAL_LM
+  r: 16
+  lora_alpha: 32
+  lora_dropout: 0.05
+  bias: none
+  # AgentTune GRPO recommends "all-linear" for Cohere/Tiny Aya; exclude lm_head for TRL SFT safety
+  target_modules: all-linear
+  exclude_modules:
+    - lm_head
+  explicit_target_modules_fallback:
+    - q_proj
+    - k_proj
+    - v_proj
+    - o_proj
+    - gate_proj
+    - up_proj
+    - down_proj
+
+training:
+  num_train_epochs: 3
+  learning_rate: 2.0e-4
+  lr_scheduler_type: cosine
+  warmup_ratio: 0.1
+  per_device_train_batch_size: 1
+  per_device_eval_batch_size: 1
+  gradient_accumulation_steps: 4
+  max_length: 2048
+  loss_type: nll
+  completion_only_loss: true
+  loss_masking_strategy: pretokenized_assistant_labels
+  packing: false
+  gradient_checkpointing: true
+  bf16: true
+  fp16: false
+  logging_steps: 1
+  eval_strategy: epoch
+  save_strategy: epoch
+  save_total_limit: 2
+  report_to: none
+
+data:
+  train_path: training/data/splits/train.jsonl
+  validation_path: training/data/splits/validation.jsonl
+  manifest_path: training/data/dataset_manifest.json
+
+chat_template:
+  enforce_strict_alternation: true
+  fold_tool_outputs_into_user: true
+  preserve_dbmedic_json_protocol: true
+
+hardware_gate:
+  require_cuda_for_full_run: true
+  min_free_ram_gb: 6.0
+  min_free_vram_gb: 6.0

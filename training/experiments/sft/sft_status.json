@@ -1,0 +1,51 @@
+{
+  "schema_version": "dbmedic.sft_status/1",
+  "status": "blocked",
+  "executed_training": false,
+  "model_id": "CohereLabs/tiny-aya-global",
+  "agenttune_project_trajectories": 18,
+  "agenttune_sft_rows": 18,
+  "readiness": {
+    "model_id": "CohereLabs/tiny-aya-global",
+    "hf_token_present": false,
+    "hf_token_env_var": null,
+    "cuda_available": false,
+    "gpu_name": null,
+    "gpu_vram_gb": 0.0,
+    "free_ram_gb": 0.86,
+    "total_ram_gb": 15.12,
+    "db_available": false,
+    "trl_available": true,
+    "peft_available": true,
+    "datasets_available": true,
+    "agenttune_available": true,
+    "train_dataset_exists": true,
+    "validation_dataset_exists": true,
+    "dataset_manifest_valid": true,
+    "ready_for_dry_run": true,
+    "ready_for_live_training": false,
+    "blockers": [
+      "HF_TOKEN / HUGGINGFACE_HUB_TOKEN not found in environment/.env for gated model 'CohereLabs/tiny-aya-global'.",
+      "No CUDA GPU detected (torch.cuda.is_available() == False). Full Tiny Aya SFT requires >=6-8 GB GPU VRAM."
+    ],
+    "warnings": [
+      "dbmedic_lab PostgreSQL is currently unreachable offline; offline curated dataset SFT preflight remains valid, but live trajectory collection and DB evaluation are blocked."
+    ],
+    "checked_at": "2026-11-11T13:05:56.044305+00:00"
+  },
+  "blockers": [
+    "HF_TOKEN / HUGGINGFACE_HUB_TOKEN not found in environment/.env for gated model 'CohereLabs/tiny-aya-global'.",
+    "No CUDA GPU detected (torch.cuda.is_available() == False). Full Tiny Aya SFT requires >=6-8 GB GPU VRAM."
+  ],
+  "telemetry": {
+    "training_time_sec": null,
+    "gpu_memory_usage_mb": null,
+    "inference_latency_ms": null,
+    "adapter_size_mb": null,
+    "dataset_size": 18,
+    "validation_size": 5,
+    "training_loss": null
+  },
+  "generated_at": "2026-11-11T13:05:56.064906+00:00",
+  "note": "Live SFT training could not execute in current environment due to explicit blockers (no fabricated training metrics or checkpoints written)."
+}

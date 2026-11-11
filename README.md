@@ -14,6 +14,7 @@ DBMedic is an AI-powered autonomous database diagnostic and self-healing agent b
 - **Phase 1 — Testing Environment**: PostgreSQL 17 in Docker, control database (`dbmedic`), lab database (`dbmedic_lab`), synthetic e-commerce data (200k orders), and controlled slow-query benchmark.
 - **Phase 2 — Diagnostic Engine**: Deterministic PostgreSQL diagnostic tools (`query_analyzer`, `table_monitor`, `index_monitor`, `diagnosis_engine`) that investigate incidents and produce structured JSON diagnostic reports.
 - **Phase 3 — Autonomous Agent Integration & Baseline Evaluation**: Full ReAct agent integration with `CohereLabs/tiny-aya-global`, strict tool-calling protocol, argument validation, trajectory logging, and standardized baseline evaluation.
+- **Phase 4 — AgentTune Training, Failure Learning & Self-Healing Pipeline**: 10-category failure classifier, verified Phase 2 correction synthesis, leakage-free Tiny Aya SFT dataset curation with SHA-256 verification, AgentTune LoRA SFT distillation, gated GRPO experimentation, deterministic diagnostic rewards, and human-approved deployment gating.
 
 ## Project Structure
 
@@ -61,15 +62,33 @@ DBMedic/
 │       └── generate_data.sql        # Deterministic synthetic data generator
 ├── docs/
 │   ├── agent_architecture.md        # Phase 3 agent architecture & safety boundary reference
-│   ├── tiny_aya_setup.md            # Setup guide for CohereLabs/tiny-aya-global
+│   ├── agenttune_integration.md     # Phase 4 AgentTune spine, EventLog & TRL compatibility
 │   ├── baseline_evaluation.md       # Pre-training evaluation methodology & metrics
-│   └── diagnostic_engine.md         # Diagnostic engine architecture and reference
+│   ├── diagnostic_engine.md         # Diagnostic engine architecture and reference
+│   ├── failure_learning.md          # 10-category failure taxonomy, repairs & self-healing loop
+│   ├── reward_design.md             # Configurable deterministic rewards & anti-hacking rules
+│   ├── tiny_aya_setup.md            # Setup guide for CohereLabs/tiny-aya-global
+│   └── training_pipeline.md         # AgentTune SFT distillation & gated GRPO guide
 ├── scripts/
 │   ├── run_agent.py                 # CLI interface for agent query, incident, & evaluation
 │   ├── setup_lab.py                 # Initializes dbmedic_lab database and schema
 │   ├── generate_dataset.py          # Populates synthetic customers, orders, products
 │   ├── run_slow_query_benchmark.py  # Runs baseline / remediation benchmarks
-│   └── run_diagnostics.py           # Executes Phase 2 diagnostic engine end-to-end
+│   ├── run_diagnostics.py           # Executes Phase 2 diagnostic engine end-to-end
+│   ├── collect_training_trajectories.py # Collects real or controlled failure trajectories
+│   ├── analyze_failures.py          # Runs 10-category failure analysis on trajectories
+│   ├── build_training_dataset.py    # Curates train/validation/hidden_test + SHA-256 manifest
+│   ├── validate_training_dataset.py # Audits splits for zero leakage, safety & protocol
+│   ├── train_agent.py               # Runs preflight, SFT distillation, or gated GRPO
+│   ├── evaluate_trained_agent.py    # Deterministic post-training checkpoint evaluation
+│   └── compare_models.py            # Base vs candidate 8-metric comparison & gate
+├── training/
+│   ├── configs/                     # dataset_config.yaml, sft_config.yaml, grpo_config.yaml
+│   ├── failure_analysis/            # 10-category classifier, batch analyzer & verifier
+│   ├── rewards/                     # Deterministic reward_config.yaml & safety/diagnostic rewards
+│   ├── data/                        # Tiny Aya strict alternation formatter, curator, validator & splits
+│   ├── agenttune/                   # EventLog/Project adapter, LoRA SFT distillation, gated GRPO
+│   └── experiments/                 # Baseline snapshot & SFT/GRPO status/provenance artifacts
 └── tests/
     ├── test_database_setup.py       # Validates lab database schema & constraints
     ├── test_slow_query.py           # Validates slow-query incident & gating
@@ -82,7 +101,14 @@ DBMedic/
     ├── test_orchestrator.py         # Multi-step loop, max step enforcement, failure handling
     ├── test_model_client.py         # Model client loading, token protection, formatting
     ├── test_agent_integration.py    # End-to-end agent orchestration tests
-    └── test_baseline_evaluation.py  # Metrics calculation, dataset, & trajectory logging
+    ├── test_baseline_evaluation.py  # Metrics calculation, dataset, & trajectory logging
+    ├── test_failure_classifier.py   # Phase 4: all 10 failure categories & tolerance rules
+    ├── test_correction_generator.py # Phase 4: deterministic correction & verification gates
+    ├── test_trajectory_adapter.py   # Phase 4: AgentTune EventLog, Project & DictToolHarness
+    ├── test_training_dataset.py     # Phase 4: curation, dedup, zero leakage & -100 masking
+    ├── test_reward_functions.py     # Phase 4: deterministic reward weights & anti-hacking
+    ├── test_training_config.py      # Phase 4: YAML configs, LoRA, preflight & GRPO gating
+    └── test_model_comparison.py     # Phase 4: 8-metric A/B comparison & self-healing lifecycle
 ```
 
 ## Getting Started
@@ -139,6 +165,29 @@ python scripts/run_agent.py --list-incidents
 
 # 4. Run baseline evaluation
 python scripts/run_agent.py --evaluate --max-cases 3
+```
+
+## Phase 4 — AgentTune Training & Failure Learning
+
+```powershell
+# 1. Collect trajectories (or generate a clearly tagged simulated failure sample offline)
+python scripts/collect_training_trajectories.py --generate-controlled-failures-sample
+
+# 2. Analyze failures across all 10 failure categories
+python scripts/analyze_failures.py
+
+# 3. Curate leakage-free splits (train / validation / sanitized hidden_test) & SHA-256 manifest
+python scripts/build_training_dataset.py
+python scripts/validate_training_dataset.py
+
+# 4. Run readiness preflight, primary AgentTune SFT (or dry-run), and gated GRPO checks
+python scripts/train_agent.py --mode preflight
+python scripts/train_agent.py --mode sft --dry-run
+python scripts/train_agent.py --mode grpo --dry-run
+
+# 5. Evaluate checkpoint deterministically and compare Base vs Candidate
+python scripts/evaluate_trained_agent.py --split validation --dry-run
+python scripts/compare_models.py --dry-run
 ```
 
 ## Running Tests

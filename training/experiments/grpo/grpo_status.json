@@ -1,0 +1,53 @@
+{
+  "schema_version": "dbmedic.grpo_status/1",
+  "status": "gated_blocked",
+  "executed_training": false,
+  "experimental_only": true,
+  "readonly_tools": [
+    "get_query_execution_plan",
+    "analyze_query_performance",
+    "get_table_statistics",
+    "get_table_size",
+    "get_table_indexes",
+    "get_index_usage",
+    "inspect_customer_id_index",
+    "diagnose_slow_query"
+  ],
+  "excluded_tools": [
+    "alter_table",
+    "apply_remediation",
+    "execute_sql",
+    "drop_table",
+    "drop_index",
+    "create_index",
+    "run_sql"
+  ],
+  "gating": {
+    "passed": false,
+    "sft_checkpoint_exists": false,
+    "sft_checkpoint_path": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft",
+    "hf_token_present": false,
+    "cuda_available": false,
+    "gpu_vram_gb": 0.0,
+    "min_required_vram_gb": 12.0,
+    "live_db_available": false,
+    "trl_available": true,
+    "read_only_tools_verified": true,
+    "num_readonly_tools": 8,
+    "blockers": [
+      "Missing verified SFT checkpoint at 'C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft'; complete SFT distillation before GRPO.",
+      "HF_TOKEN / HUGGINGFACE_HUB_TOKEN is not set.",
+      "CUDA GPU with >= 12.0 GB VRAM is required for GRPO rollouts (detected cuda=False, vram=0.0 GB).",
+      "Live dbmedic_lab PostgreSQL database must be online to run real diagnostic GRPO rollouts."
+    ],
+    "checked_at": "2026-11-11T13:06:08.400387+00:00"
+  },
+  "blockers": [
+    "Missing verified SFT checkpoint at 'C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\experiments\\sft'; complete SFT distillation before GRPO.",
+    "HF_TOKEN / HUGGINGFACE_HUB_TOKEN is not set.",
+    "CUDA GPU with >= 12.0 GB VRAM is required for GRPO rollouts (detected cuda=False, vram=0.0 GB).",
+    "Live dbmedic_lab PostgreSQL database must be online to run real diagnostic GRPO rollouts."
+  ],
+  "generated_at": "2026-11-11T13:06:08.414058+00:00",
+  "note": "Experimental GRPO is blocked by gating checks (SFT checkpoint, CUDA >= 12 GB, live dbmedic_lab, HF_TOKEN). Zero RL rollouts executed or fabricated."
+}

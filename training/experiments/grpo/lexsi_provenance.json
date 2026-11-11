@@ -1,0 +1,32 @@
+{
+  "schema": "lexsi.provenance/1",
+  "library": "agenttune",
+  "version": "1.1.4",
+  "git_sha": null,
+  "created_at": "2026-11-11T13:06:08Z",
+  "base_model": "training/experiments/sft",
+  "method": "agenttune.agentic.grpo",
+  "inputs": [
+    {
+      "kind": "dataset",
+      "ref": "C:\\Users\\spyan\\OneDrive\\Desktop\\DBMedic\\training\\data",
+      "config": null,
+      "provenance": null
+    }
+  ],
+  "params": {
+    "gating_passed": false,
+    "num_readonly_tools": 8,
+    "tools": [
+      "get_query_execution_plan",
+      "analyze_query_performance",
+      "get_table_statistics",
+      "get_table_size",
+      "get_table_indexes",
+      "get_index_usage",
+      "inspect_customer_id_index",
+      "diagnose_slow_query"
+    ],
+    "dry_run": false
+  }
+}
